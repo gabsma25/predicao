@@ -1,0 +1,15 @@
+.venv/
+.env
+__pycache__/
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+data/
+models/
+logs/
+
+*.pyc
+*.pyo
+*.pyd
