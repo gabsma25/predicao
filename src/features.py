@@ -98,13 +98,17 @@ def build_features():
     df["criterio_4_alto_valor_sem_comp"] = (
         df["modalidade_compra"].isin(modalidades_sem_comp) & (df["valor_licitacao"] > 10_000_000)
     )
-
-    df["candidato_anomalia"] = (
+    # Mantemos a versão heurística do rótulo para auditoria, evitando sobrescrever
+    df["candidato_anomalia_heuristica"] = (
         df["criterio_1_acima_p99_modalidade"] |
         df["criterio_2_sem_competicao"] |
         df["criterio_3_limite_dispensa"] |
         df["criterio_4_alto_valor_sem_comp"]
     )
+
+    # Alias de compatibilidade enquanto o restante do pipeline migra para o
+    # nome mais explícito acima.
+    df["candidato_anomalia"] = df["candidato_anomalia_heuristica"].astype(bool)
 
     # Salvamento
     out_path = INTERIM_DIR / "dataset_analitico.parquet"
