@@ -41,6 +41,11 @@ PORTAL_TRANSPARENCIA_API_KEY = os.getenv("PORTAL_TRANSPARENCIA_API_KEY")
 ANOS_INCLUIDOS = [2022]
 MESES_INCLUIDOS = list(range(1, 13))  # janeiro a dezembro
 
+# Chave composta usada em todo o projeto para identificar uma licitação
+# Mantemos aqui para centralizar a convenção e evitar duplicação entre
+# `src/tratamento.py`, notebooks e outros módulos.
+CHAVE_LICITACAO = ["numero_licitacao", "codigo_ug", "codigo_modalidade_compra"]
+
 # ---------------------------------------------------------------------------
 # Formato dos CSVs do governo brasileiro
 # ---------------------------------------------------------------------------

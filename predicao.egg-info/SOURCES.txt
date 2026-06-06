@@ -1,0 +1,10 @@
+pyproject.toml
+./src/__init__.py
+./src/config.py
+./src/consolidacao.py
+./src/scripts.py
+./src/tratamento.py
+predicao.egg-info/PKG-INFO
+predicao.egg-info/SOURCES.txt
+predicao.egg-info/dependency_links.txt
+predicao.egg-info/top_level.txt
