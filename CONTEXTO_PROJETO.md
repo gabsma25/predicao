@@ -510,3 +510,28 @@ dir data\interim
 ```
 
 Próxima ação após a consolidação: abrir `notebooks/01_inspecao.ipynb` e rodar `df.info()` + `df.head()` em cada parquet para descobrir o schema real e a chave de ligação entre as tabelas.
+
+---
+
+## 17. Contexto operacional do ambiente virtual e do `pyarrow`
+
+### Como o ambiente foi configurado
+
+- O projeto usa a `.venv` em `C:\Users\Gabriela\Pmonkey\IA\predicao\.venv`.
+- O pacote do projeto foi instalado em modo editável com `uv pip install -e .`.
+- Foi criado um kernel Jupyter apontando para essa mesma `.venv` (`predicao-venv`).
+- Os notebooks passaram a importar `src.config`, `src.features` e outros módulos diretamente, sem `sys.path.append(...)`.
+
+### O que aconteceu com `pyarrow`
+
+- O erro não era apenas ausência de pacote, mas mistura de ambientes no Jupyter.
+- Em alguns momentos o notebook rodou com um kernel diferente do Python onde `pandas` e `pyarrow` estavam instalados.
+- Isso gerou erro ao ler parquet e sintomas como `Unable to find a usable engine` e `ArrowKeyError`.
+- A correção foi alinhar tudo à mesma `.venv`, reinstalar/confirmar `pyarrow` nessa instalação e reiniciar o kernel.
+
+### Regra prática para continuidade
+
+- Sempre usar `predicao-venv` nos notebooks.
+- Não usar `pip install` puro nem `sys.path` manual.
+- Se surgir erro de parquet/Arrow, primeiro conferir o kernel ativo e o `sys.executable`.
+- Com o ambiente alinhado, leitura e gravação de parquet funcionam normalmente.
