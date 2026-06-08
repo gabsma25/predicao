@@ -38,7 +38,7 @@ from sklearn.metrics import (
 from src.consolidacao import consolidar_tudo
 from src.tratamento import tratar_tudo
 from src.features import build_features
-from src.anomaly import run_isolation_forest
+from src.anomaly import run_isolation_forest_with_split as run_isolation_forest
 from src.config import (
     INTERIM_DIR,
     MODELS_DIR,
@@ -108,6 +108,7 @@ def _train_supervised(interim_path: Path, models_dir: Path):
         "hhi",
         "top1_share",
         "dia_semana",
+        "log_razao_valor_mediana",
     ]
 
     categorical_features = [

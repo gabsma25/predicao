@@ -80,6 +80,15 @@ def build_features():
 
     df["log_valor_licitacao"] = np.log10(df["valor_licitacao"].clip(lower=0.01))
 
+    # Razão log10 do valor em relação à mediana da modalidade
+    # Captura "quão atípico é esse valor dentro do contexto da modalidade" —
+    # duas licitações com mesmo valor absoluto terão log_razao diferente se
+    # pertencerem a modalidades com medianas distintas.
+    df["valor_mediana_modalidade"] = df.groupby("modalidade_compra")["valor_licitacao"].transform("median")
+    df["log_razao_valor_mediana"] = np.log10(
+        df["valor_licitacao"].clip(lower=0.01) / df["valor_mediana_modalidade"].clip(lower=0.01)
+    )
+
     # Tempo
     if "data_resultado_compra" in df.columns:
         df["mes"] = df["data_resultado_compra"].dt.to_period("M").astype(str)
