@@ -38,7 +38,7 @@ PORTAL_TRANSPARENCIA_API_KEY = os.getenv("PORTAL_TRANSPARENCIA_API_KEY")
 # ---------------------------------------------------------------------------
 # Controla quais meses serão processados na consolidação.
 # Para incluir 2023 no futuro: ANOS_INCLUIDOS = [2022, 2023]
-ANOS_INCLUIDOS = [2022]
+ANOS_INCLUIDOS = [2022, 2023]
 MESES_INCLUIDOS = list(range(1, 13))  # janeiro a dezembro
 
 # Chave composta usada em todo o projeto para identificar uma licitação
