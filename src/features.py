@@ -86,7 +86,8 @@ def build_features():
         df["ano"] = df["data_resultado_compra"].dt.year
         df["dia_semana"] = df["data_resultado_compra"].dt.dayofweek
 
-    # Critérios heurísticos (mesma lógica do notebook EDA)
+    # Critérios heurísticos (para referência/comparação apenas)
+    # Não são usados como label no modelo supervisionado para evitar circularidade
     df["valor_p99_modalidade"] = df.groupby("modalidade_compra")["valor_licitacao"].transform(lambda s: s.quantile(0.99))
     df["criterio_1_acima_p99_modalidade"] = df["valor_licitacao"] > df["valor_p99_modalidade"]
 
@@ -98,17 +99,14 @@ def build_features():
     df["criterio_4_alto_valor_sem_comp"] = (
         df["modalidade_compra"].isin(modalidades_sem_comp) & (df["valor_licitacao"] > 10_000_000)
     )
-    # Mantemos a versão heurística do rótulo para auditoria, evitando sobrescrever
+
+    # Candidato anomalia: usado apenas para validação/comparação, não para treinar modelo
     df["candidato_anomalia_heuristica"] = (
         df["criterio_1_acima_p99_modalidade"] |
         df["criterio_2_sem_competicao"] |
         df["criterio_3_limite_dispensa"] |
         df["criterio_4_alto_valor_sem_comp"]
     )
-
-    # Alias de compatibilidade enquanto o restante do pipeline migra para o
-    # nome mais explícito acima.
-    df["candidato_anomalia"] = df["candidato_anomalia_heuristica"].astype(bool)
 
     # Salvamento
     out_path = INTERIM_DIR / "dataset_analitico.parquet"

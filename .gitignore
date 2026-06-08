@@ -9,8 +9,9 @@ __pycache__/
 **/.idea/
 *.iml
 
-.CONTEXTO_PROJETO.md
-.PROJECT_TREE.md
+CONTEXTO_PROJETO.md
+PROJECT_TREE.md
+
 
 data/
 models/
