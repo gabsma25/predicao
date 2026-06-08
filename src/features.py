@@ -86,7 +86,8 @@ def build_features():
         df["ano"] = df["data_resultado_compra"].dt.year
         df["dia_semana"] = df["data_resultado_compra"].dt.dayofweek
 
-    # Critérios heurísticos (mesma lógica do notebook EDA)
+    # Critérios heurísticos (para referência/comparação apenas)
+    # Não são usados como label no modelo supervisionado para evitar circularidade
     df["valor_p99_modalidade"] = df.groupby("modalidade_compra")["valor_licitacao"].transform(lambda s: s.quantile(0.99))
     df["criterio_1_acima_p99_modalidade"] = df["valor_licitacao"] > df["valor_p99_modalidade"]
 
@@ -99,7 +100,8 @@ def build_features():
         df["modalidade_compra"].isin(modalidades_sem_comp) & (df["valor_licitacao"] > 10_000_000)
     )
 
-    df["candidato_anomalia"] = (
+    # Candidato anomalia: usado apenas para validação/comparação, não para treinar modelo
+    df["candidato_anomalia_heuristica"] = (
         df["criterio_1_acima_p99_modalidade"] |
         df["criterio_2_sem_competicao"] |
         df["criterio_3_limite_dispensa"] |
