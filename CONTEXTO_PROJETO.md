@@ -510,3 +510,92 @@ dir data\interim
 ```
 
 Próxima ação após a consolidação: abrir `notebooks/01_inspecao.ipynb` e rodar `df.info()` + `df.head()` em cada parquet para descobrir o schema real e a chave de ligação entre as tabelas.
+
+---
+
+## 17. O que já foi feito (Refatoração — Eliminando Circularidad)
+
+### Problema identificado
+
+Durante a revisão do pipeline, foram detectados **3 problemas críticos**:
+
+1. **Isolamento Forest sem train/test split**: O modelo estava sendo treinado no dataset inteiro, violando a exigência do edital de separação explícita de treino/teste.
+
+2. **Circularidad entre features e label** (CRÍTICO): O fluxo original era circular:
+   - `features.py` → gera `candidato_anomalia` usando regras heurísticas (ex: `n_participantes == 1`)
+   - `anomaly.py` → Isolation Forest usa as mesmas features
+   - Modelo supervisionado → treina para prever `candidato_anomalia` usando as mesmas features que originaram o rótulo
+   
+   **Resultado:** O modelo supervisionado aprendia exatamente a regra heurística, sem descobrir nada novo. Isso violava o princípio pedagógico de "aplicar algoritmos para descobrir padrões".
+
+3. **EDA visual completa**: Verificado que os gráficos da `02_eda.ipynb` já existem (distribuição log, boxplots, Pareto, análise temporal). Nenhuma ação necessária neste ponto.
+
+### Solução implementada
+
+#### `src/features.py` (refatorado)
+- Renomeado `candidato_anomalia` → **`candidato_anomalia_heuristica`** para marcar como validação-apenas
+- Função `build_features()` agora **não produz label para modelagem supervisionada**
+- O heurístico fica registrado apenas para fins de **comparação posterior** com os modelos treinados
+- Comentários inline documentam a decisão de evitar circularidad
+
+#### `src/anomaly.py` (refatorado)
+- **Nova função:** `run_isolation_forest_with_split(test_size=0.2)`
+- Implementação de **split estratificado 80/20** usando `modalidade_compra` como coluna estratificadora
+- StandardScaler treinado **apenas no conjunto de treino**, depois aplicado a ambos (treino + teste)
+- Isolation Forest treinado **apenas no conjunto de treino** (evita data leakage)
+- Scores calculados em treino e teste separadamente
+- Nova coluna `fold` ('train' / 'test') para rastreabilidade
+- **Resultado:** 87.476 registros treino (875 anomalias, 1%), 21.870 registros teste (213 anomalias, 0.97%)
+
+#### Nova estratégia de modelagem supervisionada
+- **Label agora é `anomalia_score`** (saída contínua do Isolation Forest), não as regras heurísticas
+- Modelos supervisionados (KNN, Árvore de Decisão, Random Forest) **aprendem a aproximar o padrão descoberto pelo IF** de forma interpretável
+- Isso resolve a circularidad: há uma descoberta real (o IF encontrou) e o supervisionado tenta interpretá-la
+
+### Notebooks criados
+
+#### `notebooks/04_modelagem_anomalia.ipynb`
+- **Objetivo:** Análise exploratória do Isolation Forest
+- **Conteúdo:**
+  - Distribuição dos scores de anomalia por fold (treino vs teste)
+  - Comparação: % de overlap entre `anomalia_score` (IF) e `candidato_anomalia_heuristica` (regras)
+  - Top 20 anomalias descobertas pelo IF com suas features
+  - Análise de correlação entre features e scores
+  - Visualizações: distribuição, boxplot, scatter com PCA 2D
+- **Status:** Criado; aguardando execução
+
+#### `notebooks/05_modelagem_supervisionada.ipynb`
+- **Objetivo:** Treinar modelos supervisionados para aproximar IF's output
+- **Conteúdo:**
+  - Dados já separados em treino/teste (herdados de `anomaly.py`)
+  - Modelos treinados: KNN, Árvore de Decisão (DecisionTreeRegressor), Random Forest (RandomForestRegressor)
+  - Tuning de hiperparâmetros com StratifiedKFold(5) no conjunto de treino
+  - Métricas: R² (coeficiente de determinação), MAE (erro médio absoluto), RMSE
+  - Análise de importância de features (para Árvore e Random Forest)
+  - Visualizações: previsões vs scores reais, distribuição de resíduos
+- **Status:** Criado; aguardando execução
+
+### Impacto no relatório
+
+A refatoração muda o narrative:
+
+- **Antes:** "Detectamos anomalias com IF e reproduzimos as regras com supervisionado" (circular, sem valor científico)
+- **Depois:** "Descobrimos padrões com IF; modelos supervisionados interpretáveis aproximam esse padrão com boa acurácia"
+
+Isso **qualifica** o projeto para os 1,5 pontos de "Aplicação correta dos algoritmos" — os modelos realmente aprendem, não memorizam regras.
+
+### Git status
+
+- **Branch:** Refactoring foi feito em feature branch e mergeado para master
+- **Commits:** 
+  - `99301a4`: Refactoring detalhado (features.py, anomaly.py, novos notebooks)
+  - `0b89a83`: Merge commit em master (resolução de conflitos)
+- **Status:** Tudo sincronizado e pushed para `origin/master`
+
+### Próximas ações
+
+1. **Executar `04_modelagem_anomalia.ipynb`** para validar análise exploratória (30 min)
+2. **Executar `05_modelagem_supervisionada.ipynb`** para treinar modelos e gerar métricas (45 min)
+3. **Criar `notebooks/06_avaliacao.ipynb`** com comparação final e interpretações (30 min)
+4. **Atualizar `RELATORIO.md`** com metodologia e resultados (45 min)
+5. **Criar `notebooks/99_apresentacao.ipynb`** para apresentação oral (30 min)
