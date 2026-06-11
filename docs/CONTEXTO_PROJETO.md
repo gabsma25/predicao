@@ -312,17 +312,20 @@ Reservar 1-2h em cada dia para imprevistos (encoding, RAM, schema diferente do e
 
 ### ✅ Concluído
 1. Ambiente virtual `.venv` criado e funcionando com `uv`
-2. Bibliotecas instaladas via `requirements.txt`
+2. Bibliotecas instaladas via `requirements.txt` (inclui `shap>=0.45`)
 3. Estrutura de pastas montada
 4. CSVs baixados e organizados em `data/raw/AAAAMM_Licitacoes/`
 5. Acentos removidos dos nomes de arquivos via script PowerShell
 6. `src/config.py` criado com `load_dotenv()` e caminhos
 7. `src/consolidacao.py` criado e EXECUTADO com sucesso para a tabela `Licitacao` (109.346 linhas, 18 colunas — só 2022)
 8. `pyarrow` instalado para suporte a parquet
+9. Pipeline supervisionado treinado e salvo em `models/modelo_supervisionado_anomalia.joblib`
+10. Métricas e artefatos de avaliação salvos: `models/metricas_supervisionado_anomalia.json` e `models/threshold_otimo.json` (threshold otimizado por F2)
+11. Figura da curva PR salva em `reports/curva_pr_threshold.png`
+12. Módulo de explicabilidade criado: `src/explicabilidade.py` — gera `reports/shap_top20.json`, `reports/shap_summary_top20.png` e `reports/shap_waterfall_caso1.png`
 
 ### 🚧 Próximo passo imediato
 **Re-rodar `python src/consolidacao.py`** para gerar os 4 parquets em `data/interim/` (Licitacao já rodou; faltam ItemLicitacao, ParticipantesLicitacao e EmpenhosRelacionados — a execução parou no erro de pyarrow antes de processar essas três).
-
 ## 11. Decisões metodológicas já tomadas
 
 ### Sobre o problema
@@ -346,7 +349,7 @@ Reservar 1-2h em cada dia para imprevistos (encoding, RAM, schema diferente do e
 ### Cortes feitos para caber em 2 dias
 - ❌ Cruzamento com CEIS/CNEP via API (substituído por label proxy)
 - ❌ DBSCAN (IF + LOF bastam para Etapa A)
-- ❌ SHAP (substituído por `feature_importances_` da árvore)
+- ✅ SHAP (implementado; módulo `src/explicabilidade.py` gera relatórios em `reports/`)
 - ❌ Streamlit dashboard (notebook polido é suficiente)
 - ❌ UMAP (PCA cobre a visualização 2D)
 - ❌ XGBoost (Random Forest cobre o papel)
@@ -443,6 +446,16 @@ for ano in ANOS_INCLUIDOS:
         ano_mes = f"{ano}{mes:02d}"
         arquivos.extend(raw_dir.glob(f"{ano_mes}_*/{ano_mes}_{tipo}.csv"))
 ```
+
+## 12.1 Artefatos gerados recentemente
+
+- `models/modelo_supervisionado_anomalia.joblib` — pipeline sklearn final (steps: `pre` ColumnTransformer, `clf` RandomForestClassifier)
+- `models/metricas_supervisionado_anomalia.json` — métricas no threshold default (inclui F2)
+- `models/threshold_otimo.json` — threshold ótimo encontrado otimizando F2; inclui `threshold_default`, `threshold_otimo`, `metrics_default`, `metrics_otimo` e `pr_curve` (lista completa de pontos)
+- `reports/curva_pr_threshold.png` — plot PR com pontos marcados (default 0.5 em vermelho; ótimo em verde)
+- `reports/shap_top20.json`, `reports/shap_summary_top20.png`, `reports/shap_waterfall_caso1.png` — resultados da explicabilidade local para as 20 licitações com maior probabilidade
+
+Esses artefatos foram gerados pela execução do pipeline (`python -m src.run_pipeline`) e pelo módulo de explicabilidade (`python -c "from src.explicabilidade import gerar_shap_top_anomalias; gerar_shap_top_anomalias()"`).
 
 ## 13. Problemas resolvidos e armadilhas evitadas
 

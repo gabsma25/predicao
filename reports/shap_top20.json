@@ -1,0 +1,562 @@
+[
+  {
+    "numero_licitacao": 92022,
+    "modalidade_compra": "Inexigibilidade de Licitação",
+    "valor_licitacao": 27552000.0,
+    "probabilidade": 0.9982143630741724,
+    "top_5_contribuicoes": [
+      [
+        "valor_total_itens",
+        0.2094198546200879
+      ],
+      [
+        "log_razao_valor_mediana",
+        0.16471151538788237
+      ],
+      [
+        "hhi",
+        0.051319723707901096
+      ],
+      [
+        "top1_share",
+        0.04155677794164137
+      ],
+      [
+        "n_participantes",
+        -0.016629413076202443
+      ]
+    ]
+  },
+  {
+    "numero_licitacao": 102022,
+    "modalidade_compra": "Inexigibilidade de Licitação",
+    "valor_licitacao": 36480000.0,
+    "probabilidade": 0.9981824114639418,
+    "top_5_contribuicoes": [
+      [
+        "valor_total_itens",
+        0.21107701061754439
+      ],
+      [
+        "log_razao_valor_mediana",
+        0.16185820088820801
+      ],
+      [
+        "hhi",
+        0.05023236039398478
+      ],
+      [
+        "top1_share",
+        0.04173812678741155
+      ],
+      [
+        "n_participantes",
+        -0.016338076024134573
+      ]
+    ]
+  },
+  {
+    "numero_licitacao": 22022,
+    "modalidade_compra": "Inexigibilidade de Licitação",
+    "valor_licitacao": 37224000.0,
+    "probabilidade": 0.9981824114639418,
+    "top_5_contribuicoes": [
+      [
+        "valor_total_itens",
+        0.21108645805067736
+      ],
+      [
+        "log_razao_valor_mediana",
+        0.16190714549928986
+      ],
+      [
+        "hhi",
+        0.050233611822923
+      ],
+      [
+        "top1_share",
+        0.041724579741754295
+      ],
+      [
+        "n_participantes",
+        -0.016338076024134573
+      ]
+    ]
+  },
+  {
+    "numero_licitacao": 52022,
+    "modalidade_compra": "Inexigibilidade de Licitação",
+    "valor_licitacao": 28776000.0,
+    "probabilidade": 0.9981824114639418,
+    "top_5_contribuicoes": [
+      [
+        "valor_total_itens",
+        0.21113054789208535
+      ],
+      [
+        "log_razao_valor_mediana",
+        0.1619112931088642
+      ],
+      [
+        "hhi",
+        0.05072066043698628
+      ],
+      [
+        "top1_share",
+        0.04170926380097194
+      ],
+      [
+        "n_participantes",
+        -0.01621390165580716
+      ]
+    ]
+  },
+  {
+    "numero_licitacao": 22022,
+    "modalidade_compra": "Inexigibilidade de Licitação",
+    "valor_licitacao": 28864000.0,
+    "probabilidade": 0.9968630252145216,
+    "top_5_contribuicoes": [
+      [
+        "valor_total_itens",
+        0.20979685716075935
+      ],
+      [
+        "log_razao_valor_mediana",
+        0.15898988456797747
+      ],
+      [
+        "hhi",
+        0.062471043834252615
+      ],
+      [
+        "top1_share",
+        0.04918905638058771
+      ],
+      [
+        "n_participantes",
+        -0.015171259553564312
+      ]
+    ]
+  },
+  {
+    "numero_licitacao": 52022,
+    "modalidade_compra": "Inexigibilidade de Licitação",
+    "valor_licitacao": 29392000.0,
+    "probabilidade": 0.9968544158948347,
+    "top_5_contribuicoes": [
+      [
+        "valor_total_itens",
+        0.20830238272149254
+      ],
+      [
+        "log_razao_valor_mediana",
+        0.16131485748571342
+      ],
+      [
+        "hhi",
+        0.06270199756924205
+      ],
+      [
+        "top1_share",
+        0.04872608588310491
+      ],
+      [
+        "n_participantes",
+        -0.015186235833798238
+      ]
+    ]
+  },
+  {
+    "numero_licitacao": 82022,
+    "modalidade_compra": "Inexigibilidade de Licitação",
+    "valor_licitacao": 50242585.39,
+    "probabilidade": 0.9968087995534921,
+    "top_5_contribuicoes": [
+      [
+        "valor_total_itens",
+        0.20753665213373915
+      ],
+      [
+        "log_razao_valor_mediana",
+        0.16293646235588796
+      ],
+      [
+        "hhi",
+        0.06284614922939638
+      ],
+      [
+        "top1_share",
+        0.048226673744058486
+      ],
+      [
+        "situacao_licitacao_Evento de Resultado de Julgame",
+        0.015016911108821524
+      ]
+    ]
+  },
+  {
+    "numero_licitacao": 22022,
+    "modalidade_compra": "Inexigibilidade de Licitação",
+    "valor_licitacao": 44520800.0,
+    "probabilidade": 0.9968087995534921,
+    "top_5_contribuicoes": [
+      [
+        "valor_total_itens",
+        0.2070397706543324
+      ],
+      [
+        "log_razao_valor_mediana",
+        0.16241215840971346
+      ],
+      [
+        "hhi",
+        0.06159579053801811
+      ],
+      [
+        "top1_share",
+        0.048011649257806564
+      ],
+      [
+        "situacao_licitacao_Evento de Resultado de Julgame",
+        0.014993603247501928
+      ]
+    ]
+  },
+  {
+    "numero_licitacao": 92022,
+    "modalidade_compra": "Inexigibilidade de Licitação",
+    "valor_licitacao": 25248000.0,
+    "probabilidade": 0.9965128901496844,
+    "top_5_contribuicoes": [
+      [
+        "valor_total_itens",
+        0.2082496332515486
+      ],
+      [
+        "log_razao_valor_mediana",
+        0.16027039947056587
+      ],
+      [
+        "hhi",
+        0.06431008244464949
+      ],
+      [
+        "top1_share",
+        0.04083954323773356
+      ],
+      [
+        "n_participantes",
+        -0.023645470358480677
+      ]
+    ]
+  },
+  {
+    "numero_licitacao": 152023,
+    "modalidade_compra": "Inexigibilidade de Licitação",
+    "valor_licitacao": 135072000.0,
+    "probabilidade": 0.9957604552358533,
+    "top_5_contribuicoes": [
+      [
+        "valor_total_itens",
+        0.20991145841820943
+      ],
+      [
+        "log_razao_valor_mediana",
+        0.16042351675736696
+      ],
+      [
+        "hhi",
+        0.05792061096219891
+      ],
+      [
+        "top1_share",
+        0.04105104649563113
+      ],
+      [
+        "situacao_licitacao_Evento de Resultado de Julgame",
+        0.015679542523921883
+      ]
+    ]
+  },
+  {
+    "numero_licitacao": 52023,
+    "modalidade_compra": "Inexigibilidade de Licitação",
+    "valor_licitacao": 92256000.0,
+    "probabilidade": 0.9952352680472001,
+    "top_5_contribuicoes": [
+      [
+        "valor_total_itens",
+        0.20842631454411434
+      ],
+      [
+        "log_razao_valor_mediana",
+        0.15621976999677986
+      ],
+      [
+        "hhi",
+        0.05858508753019906
+      ],
+      [
+        "n_participantes",
+        -0.028742398701334278
+      ],
+      [
+        "top1_share",
+        0.024767691501072192
+      ]
+    ]
+  },
+  {
+    "numero_licitacao": 32023,
+    "modalidade_compra": "Inexigibilidade de Licitação",
+    "valor_licitacao": 28800000.0,
+    "probabilidade": 0.9934060679886642,
+    "top_5_contribuicoes": [
+      [
+        "valor_total_itens",
+        0.20612949944262585
+      ],
+      [
+        "log_razao_valor_mediana",
+        0.15213521373328456
+      ],
+      [
+        "hhi",
+        0.05881135120349774
+      ],
+      [
+        "top1_share",
+        0.029193396746945058
+      ],
+      [
+        "n_participantes",
+        -0.02819357313114474
+      ]
+    ]
+  },
+  {
+    "numero_licitacao": 62022,
+    "modalidade_compra": "Inexigibilidade de Licitação",
+    "valor_licitacao": 22088000.0,
+    "probabilidade": 0.9869337604799169,
+    "top_5_contribuicoes": [
+      [
+        "valor_total_itens",
+        0.20616565597528794
+      ],
+      [
+        "log_razao_valor_mediana",
+        0.159243991051293
+      ],
+      [
+        "hhi",
+        0.055452560466277466
+      ],
+      [
+        "top1_share",
+        0.04267378241818906
+      ],
+      [
+        "n_participantes",
+        -0.019352603644148213
+      ]
+    ]
+  },
+  {
+    "numero_licitacao": 32022,
+    "modalidade_compra": "Inexigibilidade de Licitação",
+    "valor_licitacao": 54603654.19,
+    "probabilidade": 0.9868174088731791,
+    "top_5_contribuicoes": [
+      [
+        "valor_total_itens",
+        0.20737852069844723
+      ],
+      [
+        "log_razao_valor_mediana",
+        0.15703958360443068
+      ],
+      [
+        "hhi",
+        0.06068896142430693
+      ],
+      [
+        "top1_share",
+        0.049012944728279995
+      ],
+      [
+        "n_participantes",
+        -0.01594947255755332
+      ]
+    ]
+  },
+  {
+    "numero_licitacao": 102023,
+    "modalidade_compra": "Inexigibilidade de Licitação",
+    "valor_licitacao": 103008000.0,
+    "probabilidade": 0.9867410131783578,
+    "top_5_contribuicoes": [
+      [
+        "valor_total_itens",
+        0.2131751046353168
+      ],
+      [
+        "log_razao_valor_mediana",
+        0.1634276679957526
+      ],
+      [
+        "hhi",
+        0.0428491007736834
+      ],
+      [
+        "top1_share",
+        0.039273326089902326
+      ],
+      [
+        "situacao_licitacao_Evento de Resultado de Julgame",
+        0.015134899223078658
+      ]
+    ]
+  },
+  {
+    "numero_licitacao": 42022,
+    "modalidade_compra": "Inexigibilidade de Licitação",
+    "valor_licitacao": 21826788.3,
+    "probabilidade": 0.9865970751197564,
+    "top_5_contribuicoes": [
+      [
+        "valor_total_itens",
+        0.20549087841125369
+      ],
+      [
+        "log_razao_valor_mediana",
+        0.1599855055160343
+      ],
+      [
+        "hhi",
+        0.0577271660335989
+      ],
+      [
+        "top1_share",
+        0.04227221972550014
+      ],
+      [
+        "situacao_licitacao_Evento de Resultado de Julgame",
+        0.015125468989690785
+      ]
+    ]
+  },
+  {
+    "numero_licitacao": 62022,
+    "modalidade_compra": "Inexigibilidade de Licitação",
+    "valor_licitacao": 13696008.0,
+    "probabilidade": 0.9865677665597993,
+    "top_5_contribuicoes": [
+      [
+        "valor_total_itens",
+        0.20700316858842238
+      ],
+      [
+        "log_razao_valor_mediana",
+        0.15131807018760576
+      ],
+      [
+        "hhi",
+        0.07264072358447311
+      ],
+      [
+        "top1_share",
+        0.043266996767278014
+      ],
+      [
+        "n_participantes",
+        -0.01704098006448247
+      ]
+    ]
+  },
+  {
+    "numero_licitacao": 112022,
+    "modalidade_compra": "Inexigibilidade de Licitação",
+    "valor_licitacao": 48192000.0,
+    "probabilidade": 0.9864998603283666,
+    "top_5_contribuicoes": [
+      [
+        "valor_total_itens",
+        0.20519686052937067
+      ],
+      [
+        "log_razao_valor_mediana",
+        0.15912071147900994
+      ],
+      [
+        "hhi",
+        0.05276477656833619
+      ],
+      [
+        "top1_share",
+        0.043655344388269
+      ],
+      [
+        "n_participantes",
+        -0.014826272048883432
+      ]
+    ]
+  },
+  {
+    "numero_licitacao": 42022,
+    "modalidade_compra": "Inexigibilidade de Licitação",
+    "valor_licitacao": 18262000.0,
+    "probabilidade": 0.986355227205246,
+    "top_5_contribuicoes": [
+      [
+        "valor_total_itens",
+        0.20902641110114684
+      ],
+      [
+        "log_razao_valor_mediana",
+        0.15666154249237876
+      ],
+      [
+        "hhi",
+        0.05910641518116492
+      ],
+      [
+        "top1_share",
+        0.04056061239493792
+      ],
+      [
+        "n_participantes",
+        -0.021347389911285305
+      ]
+    ]
+  },
+  {
+    "numero_licitacao": 82022,
+    "modalidade_compra": "Inexigibilidade de Licitação",
+    "valor_licitacao": 17760000.0,
+    "probabilidade": 0.986355227205246,
+    "top_5_contribuicoes": [
+      [
+        "valor_total_itens",
+        0.20902009124809745
+      ],
+      [
+        "log_razao_valor_mediana",
+        0.1566476230229229
+      ],
+      [
+        "hhi",
+        0.05910613025904487
+      ],
+      [
+        "top1_share",
+        0.04055065913758762
+      ],
+      [
+        "n_participantes",
+        -0.02134553657061393
+      ]
+    ]
+  }
+]
