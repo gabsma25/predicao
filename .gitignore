@@ -9,13 +9,13 @@ __pycache__/
 **/.idea/
 *.iml
 
-CONTEXTO_PROJETO.md
-PROJECT_TREE.md
 
+docs/
 
 data/
 models/
 logs/
+
 
 *.pyc
 *.pyo

@@ -19,6 +19,8 @@ Pipeline de machine learning para identificação de padrões suspeitos em licit
 
 Conjunto de teste estratificado: 39.540 licitações (438 suspeitas · 1,11%).
 
+Threshold otimizado (F2): **0.6245** — reduziu falsos positivos de 831 → 22; falsos negativos de 41 → 59. Curva PR completa e ponto ótimo salvos em `reports/curva_pr_threshold.png`.
+
 ---
 
 ## Metodologia
@@ -86,7 +88,13 @@ predicao/
 │   └── interim/                    # Parquets consolidados e dataset analítico
 ├── models/
 │   ├── modelo_supervisionado_anomalia.joblib
-│   └── metricas_supervisionado_anomalia.json
+│   ├── metricas_supervisionado_anomalia.json
+│   └── threshold_otimo.json        # threshold ótimo (F2) + pr_curve
+├── reports/                         # figuras e relatórios (PR curve, SHAP)
+│   ├── curva_pr_threshold.png
+│   ├── shap_top20.json
+│   ├── shap_summary_top20.png
+│   └── shap_waterfall_caso1.png
 ├── notebooks/
 │   ├── 02_eda.ipynb                # Análise exploratória dos dados
 │   ├── 05b_modelagem_independente.ipynb   # Classificação supervisionada
@@ -147,6 +155,9 @@ Tempo estimado: 8–12 minutos (depende do hardware). Saídas geradas:
 | `data/interim/dataset_analitico_com_scores.parquet` | Dataset com scores do Isolation Forest |
 | `models/modelo_supervisionado_anomalia.joblib` | Modelo treinado serializável |
 | `models/metricas_supervisionado_anomalia.json` | Métricas no conjunto de teste |
+| `models/threshold_otimo.json` | Threshold ótimo (F2) + PR curve |
+| `reports/curva_pr_threshold.png` | Plot da curva Precision-Recall com pontos marcados |
+| `reports/shap_top20.json` | Resultados SHAP para as 20 licitações top |
 | `logs/consolidacao_*.json` | Metadata de cada execução de consolidação |
 
 ---
